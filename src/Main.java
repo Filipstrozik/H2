@@ -75,13 +75,14 @@ abstract class Zlecenie{
 }
 class ZlecenieFigury extends Zlecenie{
     Figura f;
-    ZlecenieFigury(String nazwaf,double a){
-        if(nazwaf.equals("Kwadrat")){
-            f=new Kwadrat(a);
-        }
-        if(nazwaf.equals("Kolo")){
-            f=new Kolo(a);
-        }
+    ZlecenieFigury(Figura fig){
+        f=fig;
+//        if(nazwaf.equals("Kwadrat")){
+//            f=new Kwadrat(a);
+//        }
+//        if(nazwaf.equals("Kolo")){
+//            f=new Kolo(a);
+//        }
     }
     ZlecenieFigury(String nazwaf, double a, double b){
         if(nazwaf.equals("Prostokot")){
@@ -100,11 +101,28 @@ class ZlecenieFigury extends Zlecenie{
     }
 }
 
+class ZlecenieFiguryZlozonej extends Zlecenie{
+
+
+
+    @Override
+    public double kosztCiecia() {
+        return 0;
+    }
+
+    @Override
+    public double kosztMaterialu() {
+        return 0;
+    }
+}
+
 public class Main {
 
     public static void main(String[] args) {
 	Kwadrat kw1= new Kwadrat(10);
 	Kolo Kol1 = new Kolo(3);
+	Prostokot Porst1 = new Prostokot(5,10);
+	Zlecenie z1 = new Prostokot(7,8)
 	System.out.println("UDALO SIEEE z kompa do laptopa ");
     }
 }
