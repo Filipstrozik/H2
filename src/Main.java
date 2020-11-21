@@ -75,15 +75,28 @@ abstract class Zlecenie{
 }
 class ZlecenieFigury extends Zlecenie{
     Figura f;
-    ZlecenieFigury();
+    ZlecenieFigury(String nazwaf,double a){
+        if(nazwaf.equals("Kwadrat")){
+            f=new Kwadrat(a);
+        }
+        if(nazwaf.equals("Kolo")){
+            f=new Kolo(a);
+        }
+    }
+    ZlecenieFigury(String nazwaf, double a, double b){
+        if(nazwaf.equals("Prostokot")){
+            f=new Prostokot(a,b);
+        }
+    }
 
     public double kosztCiecia() {
-        return ;
+
+        return 1.0* f.obwod();
     }
 
 
     public double kosztMaterialu() {
-        return 0;
+        return 1.0*f.pole();
     }
 }
 
