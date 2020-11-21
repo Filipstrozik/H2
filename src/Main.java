@@ -105,6 +105,6 @@ public class Main {
     public static void main(String[] args) {
 	Kwadrat kw1= new Kwadrat(10);
 	Kolo Kol1 = new Kolo(3);
-	System.out.println("UDALO SIEEE z laptopa do kompa");
+	System.out.println("UDALO SIEEE z kompa do laptopa ");
     }
 }
