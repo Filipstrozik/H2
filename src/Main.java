@@ -73,6 +73,7 @@ abstract class Zlecenie{
     public abstract double kosztCiecia();
     public abstract double kosztMaterialu();
 }
+
 class ZlecenieFigury extends Zlecenie{
     Figura f;
     ZlecenieFigury(Figura fig) {
@@ -91,28 +92,37 @@ class ZlecenieFigury extends Zlecenie{
 }
 
 class ZlecenieFiguryZlozonej extends Zlecenie{
-
+    FiguraZlozona f;
+    ZlecenieFiguryZlozonej(Figura [] t){
+        f=new FiguraZlozona(t);
+    }
 
 
     @Override
     public double kosztCiecia() {
-        return 0;
+        return f.obwod();
+
     }
 
     @Override
     public double kosztMaterialu() {
-        return 0;
+        return f.pole();
     }
 }
 
 public class Main {
 
     public static void main(String[] args) {
-	Kwadrat kw1= new Kwadrat(10);
-	Kolo Kol1 = new Kolo(3);
-	Prostokot Porst1 = new Prostokot(5,10);
-	ZlecenieFigury z1 = new ZlecenieFigury(new Prostokot(7,8));
-	System.out.println(z1.kosztMaterialu());
-	System.out.println("UDALO SIEEE z kompa do laptopa ");
+        Kwadrat kw1= new Kwadrat(10);
+        Kolo Kol1 = new Kolo(3);
+        Prostokot Porst1 = new Prostokot(5,10);
+        ZlecenieFigury z1 = new ZlecenieFigury(new Prostokot(7,8));
+        FiguraZlozona fz = new FiguraZlozona(new Figura[]{kw1, Kol1});
+        ZlecenieFiguryZlozonej z2 = new ZlecenieFiguryZlozonej(fz.fz);
+        ZlecenieFiguryZlozonej z3 = new ZlecenieFiguryZlozonej(new Figura[]{new Kolo(10),new Kwadrat(10)});
+        System.out.println(z1.kosztMaterialu());
+        System.out.println(z2.kosztMaterialu());
+        System.out.println(z3.kosztMaterialu());
+        System.out.println("UDALO SIEEE z kompa do laptopa ");
     }
 }
