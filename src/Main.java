@@ -75,19 +75,8 @@ abstract class Zlecenie{
 }
 class ZlecenieFigury extends Zlecenie{
     Figura f;
-    ZlecenieFigury(Figura fig){
-        f=fig;
-//        if(nazwaf.equals("Kwadrat")){
-//            f=new Kwadrat(a);
-//        }
-//        if(nazwaf.equals("Kolo")){
-//            f=new Kolo(a);
-//        }
-    }
-    ZlecenieFigury(String nazwaf, double a, double b){
-        if(nazwaf.equals("Prostokot")){
-            f=new Prostokot(a,b);
-        }
+    ZlecenieFigury(Figura fig) {
+        f = fig;
     }
 
     public double kosztCiecia() {
@@ -122,7 +111,8 @@ public class Main {
 	Kwadrat kw1= new Kwadrat(10);
 	Kolo Kol1 = new Kolo(3);
 	Prostokot Porst1 = new Prostokot(5,10);
-	Zlecenie z1 = new Prostokot(7,8)
+	ZlecenieFigury z1 = new ZlecenieFigury(new Prostokot(7,8));
+	System.out.println(z1.kosztMaterialu());
 	System.out.println("UDALO SIEEE z kompa do laptopa ");
     }
 }
