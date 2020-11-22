@@ -49,6 +49,14 @@ class FiguraZlozona extends Figura{
             fz[i]=figz[i];
         }
     }
+    public void dopiszFigure(Figura f){
+        Figura []temp = new Figura[fz.length+1];
+        for(int i=0;i<fz.length;i++){
+            temp[i]=fz[i];
+        }
+        temp[fz.length]=f;
+        fz=temp;
+    }
 
     public double pole() {
         double s=0.0;
@@ -76,37 +84,42 @@ abstract class Zlecenie{
 
 class ZlecenieFigury extends Zlecenie{
     Figura f;
+    double cena_za_material =1.7;
+    double cena_za_ciecie = 0.8;
+
     ZlecenieFigury(Figura fig) {
         f = fig;
     }
 
     public double kosztCiecia() {
 
-        return 1.0* f.obwod();
+        return cena_za_ciecie* f.obwod();
     }
 
-
     public double kosztMaterialu() {
-        return 1.0*f.pole();
+        return cena_za_material*f.pole();
     }
 }
 
 class ZlecenieFiguryZlozonej extends Zlecenie{
     FiguraZlozona f;
-    ZlecenieFiguryZlozonej(Figura [] t){
+    double cena_za_material =1.7;
+    double cena_za_ciecie = 0.8;
+    ZlecenieFiguryZlozonej(Figura []t){
         f=new FiguraZlozona(t);
     }
 
+    public void dopiszZlecenieFigury(Figura f){
+        this.f.dopiszFigure(f);
+    }
 
-    @Override
     public double kosztCiecia() {
-        return f.obwod();
+        return cena_za_ciecie*f.obwod();
 
     }
 
-    @Override
     public double kosztMaterialu() {
-        return f.pole();
+        return cena_za_material*f.pole();
     }
 }
 
@@ -114,15 +127,16 @@ public class Main {
 
     public static void main(String[] args) {
         Kwadrat kw1= new Kwadrat(10);
-        Kolo Kol1 = new Kolo(3);
-        Prostokot Porst1 = new Prostokot(5,10);
+        Kolo kol1 = new Kolo(3);
+        Prostokot porst1 = new Prostokot(5,10);
         ZlecenieFigury z1 = new ZlecenieFigury(new Prostokot(7,8));
-        FiguraZlozona fz = new FiguraZlozona(new Figura[]{kw1, Kol1});
+        FiguraZlozona fz = new FiguraZlozona(new Figura[]{kw1, kol1});
         ZlecenieFiguryZlozonej z2 = new ZlecenieFiguryZlozonej(fz.fz);
         ZlecenieFiguryZlozonej z3 = new ZlecenieFiguryZlozonej(new Figura[]{new Kolo(10),new Kwadrat(10)});
         System.out.println(z1.kosztMaterialu());
         System.out.println(z2.kosztMaterialu());
         System.out.println(z3.kosztMaterialu());
-        System.out.println("UDALO SIEEE z kompa do laptopa ");
+        z3.dopiszZlecenieFigury(kw1);
+        System.out.println(z3.kosztMaterialu());
     }
 }
