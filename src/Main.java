@@ -133,10 +133,13 @@ public class Main {
         FiguraZlozona fz = new FiguraZlozona(new Figura[]{kw1, kol1});
         ZlecenieFiguryZlozonej z2 = new ZlecenieFiguryZlozonej(fz.fz);
         ZlecenieFiguryZlozonej z3 = new ZlecenieFiguryZlozonej(new Figura[]{new Kolo(10),new Kwadrat(10)});
-        System.out.println(z1.kosztMaterialu());
-        System.out.println(z2.kosztMaterialu());
-        System.out.println(z3.kosztMaterialu());
+        System.out.println("koszt materiału z1 = "+z1.kosztMaterialu());
+        System.out.println("koszt ciecia z1 = "+z1.kosztCiecia());
+        System.out.println("koszt materialu z2 = "+z2.kosztMaterialu());
+        System.out.println("koszt materialu zlecenia figury zlozonej = "+z3.kosztMaterialu());
+        System.out.println("koszt ciecia zlecenia figury zlozonej = "+z3.kosztCiecia());
         z3.dopiszZlecenieFigury(kw1);
-        System.out.println(z3.kosztMaterialu());
+        System.out.println("koszt materialu zlecenia figury zlozonej po dodaniu figury = "+z3.kosztMaterialu());
+        System.out.println("koszt ciecia zlecenia figury zlozonej po dodaniu figury = "+z3.kosztCiecia());
     }
 }
